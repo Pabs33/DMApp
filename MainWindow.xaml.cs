@@ -18,8 +18,6 @@ namespace DMApp;
 /// </summary>
 public partial class MainWindow : Window
 {
-    //Falla al llamar al MainWIndowVM porque ahi se hace un Get Y la base de datos todavía no esta instanciada ya que se instancia en el Constructor
-    //TODO Solucionar
     MainWindowVM mainWindowVM;
     public MainWindow()
     {
@@ -27,5 +25,10 @@ public partial class MainWindow : Window
         ServicioDatabase.ConnectDatabase();
         mainWindowVM = new MainWindowVM();
         DataContext = mainWindowVM;
+    }
+
+    private void AddButton_Click(Object sender, RoutedEventArgs e)
+    {
+        mainWindowVM.AñadirJugador();
     }
 }

@@ -51,6 +51,38 @@ namespace DMApp.Servicios
             conexion.Close();
         }
 
+        public static void EditarJugador(Player player)
+        {
+            conexion.Open();
+            SqliteCommand comando = conexion.CreateCommand();
+
+            comando.CommandText = "UPDATE jugadores" +
+                                  "SET nombre = '" + player.Nombre + "'," +
+                                       "vida = " + player.Vida + "," + 
+                                       "estados = '" + player.Estados + "'" + 
+                                  "WHERE nombre = '" + player.Nombre + "';";
+            comando.ExecuteNonQuery();
+
+            conexion.Close();
+        }
+
+        public static void EliminarJugador(Player player)
+        {
+            conexion.Open();
+            try
+            {
+                SqliteCommand comando = conexion.CreateCommand();
+
+                comando.CommandText = "DELETE FROM jugadores " +
+                                      "WHERE nombre = '" + player.Nombre + "';";
+                comando.ExecuteNonQuery();
+            }
+            catch (NullReferenceException)
+            {
+                //TODO hacer que mande un mensaje de error
+            }
+        }
+
         public static ObservableCollection<Player> GetJugadores()
         {
             conexion.Open();

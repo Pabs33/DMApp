@@ -6,7 +6,7 @@
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:local="clr-namespace:DMApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DMApp" Height="450" Width="800">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -27,7 +27,8 @@
                     <Button Height="50px"
                             DockPanel.Dock="Left"
                             Background="Transparent"
-                            BorderBrush="Transparent">
+                            BorderBrush="Transparent"
+                            Click="AddButton_Click">
                         <Image Source="/plus.png" />
                     </Button>
                     <Button Height="50px"

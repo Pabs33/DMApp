@@ -53,5 +53,10 @@ namespace DMApp.Vistas_Modelo
                 }
             }
         }
+
+        public void AñadirJugador()
+        {
+            ServicioNavegacion.AbrirFormularioJugador();
+        }
     }
 }
