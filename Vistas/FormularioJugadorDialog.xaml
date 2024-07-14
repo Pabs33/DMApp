@@ -3,10 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:local="clr-namespace:DMApp.Vistas"
         mc:Ignorable="d"
         Title="FormularioJugadorDialog" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel Margin="20">
+        <!--Input para el nombre del jugador-->
+        <syncfusion:SfTextInputLayout
+            Hint="Nombre"
+            HintFloatMode="Float"
+            HelperText="Introduce el nombre del jugador">
+            <TextBox Text="{Binding Path=Player.Nombre}"/>
+        </syncfusion:SfTextInputLayout>
+        <!--Input para la vida del jugador-->
+        <syncfusion:SfTextInputLayout
+            Hint="Vida"
+            HintFloatMode="Float"
+            HelperText="Introduce la vida del jugador">
+            <TextBox Text="{Binding Path=Player.Vida}"/>
+        </syncfusion:SfTextInputLayout>
+        <!--Input para los estados del jugador-->
+        <syncfusion:SfTextInputLayout
+            Hint="Estados"
+            HintFloatMode="Float"
+            HelperText="Introduce los estados del jugador separados por una coma">
+            <TextBox Text="{Binding Path=Player.EstadosString}"/>
+        </syncfusion:SfTextInputLayout>
+        <syncfusion:ButtonAdv Content="ButtonAdv" Height="40" Margin="10" Label="Guardar" Width="100" Click="SaveButton_Click"/>
+    </StackPanel>
 </Window>

@@ -33,13 +33,15 @@
                     </Button>
                     <Button Height="50px"
                             Background="Transparent"
-                            BorderBrush="Transparent">
+                            BorderBrush="Transparent"
+                            Click="EditButton_CLick">
                         <Image Source="/edit.png" />
                     </Button>
                     <Button Height="50px"
                             Background="Transparent"
-                            BorderBrush="Transparent">
-                        <Image Source="/remove.png" />
+                            BorderBrush="Transparent"
+                            Click="DeleteButton_Click">
+                        <Image Source="/remove.png"/>
                     </Button>
                 </StackPanel>
 
@@ -47,6 +49,7 @@
                                        DockPanel.Dock="Left"
                                        Margin="10"
                                        ItemsSource="{Binding Path=PlayersList}"
+                                       SelectedItem="{Binding Path=PlayerSelected}"
                                        ColumnSizer="Star"
                                        AllowFiltering="True" />
             </DockPanel>

@@ -31,4 +31,14 @@ public partial class MainWindow : Window
     {
         mainWindowVM.AñadirJugador();
     }
+
+    private void DeleteButton_Click(Object sender, RoutedEventArgs e)
+    {
+        mainWindowVM.DeleteJugador();
+    }
+
+    private void EditButton_CLick(Object sender, RoutedEventArgs e)
+    {
+        mainWindowVM.EditarJugador();
+    }
 }

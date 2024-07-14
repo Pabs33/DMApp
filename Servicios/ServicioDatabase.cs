@@ -38,14 +38,14 @@ namespace DMApp.Servicios
         {
             conexion.Open();
             SqliteCommand comando = conexion.CreateCommand();
-            comando.CommandText = "insert into jugadores (nombre, vida, estados) VALUES(@nombre, @vida @estados);";
+            comando.CommandText = "insert into jugadores (nombre, vida, estados) VALUES(@nombre, @vida, @estados);";
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@vida", SqliteType.Integer);
             comando.Parameters.Add("@estados", SqliteType.Text);
 
             comando.Parameters["@nombre"].Value = player.Nombre;
-            comando.Parameters["@Vida"].Value = player.Vida;
-            comando.Parameters["@estados"].Value = player.Estados;
+            comando.Parameters["@vida"].Value = player.Vida;
+            comando.Parameters["@estados"].Value = player.EstadosString;
 
             comando.ExecuteNonQuery();
             conexion.Close();
@@ -56,10 +56,10 @@ namespace DMApp.Servicios
             conexion.Open();
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "UPDATE jugadores" +
+            comando.CommandText = "UPDATE jugadores " +
                                   "SET nombre = '" + player.Nombre + "'," +
                                        "vida = " + player.Vida + "," + 
-                                       "estados = '" + player.Estados + "'" + 
+                                       "estados = '" + player.EstadosString + "'" + 
                                   "WHERE nombre = '" + player.Nombre + "';";
             comando.ExecuteNonQuery();
 

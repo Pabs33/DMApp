@@ -8,7 +8,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DMApp.Clases
 {
-    class Player: ObservableObject, INotifyPropertyChanged
+    public class Player: ObservableObject, INotifyPropertyChanged
     {
 
         //Propiedades
@@ -67,7 +67,11 @@ namespace DMApp.Clases
             EstadosStringToList();
         }
 
-        public Player() { }
+        public Player() 
+        {
+            this.Estados = new List<string>();
+            this.EstadosString = "";
+        }
 
         //Funciones
         public void AddState(string newState)

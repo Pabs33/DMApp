@@ -20,10 +20,18 @@ namespace DMApp.Vistas_Modelo
             set { SetProperty(ref playersList, value); }
         }
 
+        private Player playerSelected;
+        public Player PlayerSelected
+        {
+            get { return playerSelected; }
+            set { SetProperty(ref playerSelected, value); }
+        }
+
         //Constructores
         public MainWindowVM() 
         {
             playersList = ServicioDatabase.GetJugadores();
+            playerSelected = new Player();
         }
 
         //Funciones
@@ -36,20 +44,20 @@ namespace DMApp.Vistas_Modelo
         {
             for (int i = 0; i < playersList.Count; i++)
             {
-                if (playersList[i].Nombre == name)
+                if (PlayersList[i].Nombre == name)
                 {
-                    playersList[i].Estados.Add(newState);
+                    PlayersList[i].Estados.Add(newState);
                 }
             }
         }
 
         public void RemoveState(string name, string stateToRemove)
         {
-            for(int i = 0;i < playersList.Count; i++)
+            for(int i = 0;i < PlayersList.Count; i++)
             {
-                if(playersList[i].Nombre == name)
+                if(PlayersList[i].Nombre == name)
                 {
-                    playersList[i].Estados.Remove(stateToRemove);
+                    PlayersList[i].Estados.Remove(stateToRemove);
                 }
             }
         }
@@ -57,6 +65,30 @@ namespace DMApp.Vistas_Modelo
         public void AñadirJugador()
         {
             ServicioNavegacion.AbrirFormularioJugador();
+        }
+
+        public void DeleteJugador()
+        {
+            try
+            {
+                ServicioDatabase.EliminarJugador(PlayerSelected);
+                RecargarDataGrid();
+            }
+            catch(Exception ex)
+            {
+                //TODO Agregar control de excepciones :)
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void EditarJugador()
+        {
+            ServicioNavegacion.AbrirFOrmularioJugador(PlayerSelected);
+        }
+
+        public void RecargarDataGrid()
+        {
+            PlayersList = ServicioDatabase.GetJugadores();
         }
     }
 }
